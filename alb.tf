@@ -8,6 +8,12 @@ resource "aws_lb" "main" {
     aws_subnet.public_2.id
   ]
 
+  access_logs {
+    bucket  = aws_s3_bucket.alb_logs.bucket
+    prefix  = "alb"
+    enabled = true
+  }
+
   tags = {
     Name = "nagoyameshi-alb"
   }
