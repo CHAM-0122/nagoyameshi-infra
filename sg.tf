@@ -1,8 +1,18 @@
+# -----------------------------
 # ALB Security Group
+# -----------------------------
 resource "aws_security_group" "alb_sg" {
   name        = "nagoyameshi-alb-sg"
   description = "Allow HTTPS from CloudFront"
   vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description = "HTTP"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   ingress {
     description = "HTTPS"
@@ -24,7 +34,9 @@ resource "aws_security_group" "alb_sg" {
   }
 }
 
+# -----------------------------
 # ECS Security Group
+# -----------------------------
 resource "aws_security_group" "ecs_sg" {
   name        = "nagoyameshi-ecs-sg"
   description = "Allow HTTP from ALB"
@@ -50,7 +62,9 @@ resource "aws_security_group" "ecs_sg" {
   }
 }
 
+# -----------------------------
 # RDS Security Group
+# -----------------------------
 resource "aws_security_group" "rds_sg" {
   name        = "nagoyameshi-rds-sg"
   description = "Allow MySQL from ECS"

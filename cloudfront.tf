@@ -1,17 +1,19 @@
 resource "aws_cloudfront_distribution" "main" {
-  enabled             = true
-  comment             = "nagoyameshi-cloudfront"
-  default_root_object = ""
+  enabled = true
+  comment = "nagoyameshi-cloudfront"
 
   origin {
     domain_name = aws_lb.main.dns_name
-    origin_id   = "nagoyameshi-alb-origin"
+    origin_id   = "alb-origin"
 
     custom_origin_config {
       http_port              = 80
       https_port             = 443
       origin_protocol_policy = "http-only"
       origin_ssl_protocols   = ["TLSv1.2"]
+
+      origin_read_timeout      = 60
+      origin_keepalive_timeout = 60
     }
   }
 
@@ -21,7 +23,7 @@ resource "aws_cloudfront_distribution" "main" {
   ]
 
   default_cache_behavior {
-    target_origin_id       = "nagoyameshi-alb-origin"
+    target_origin_id       = "alb-origin"
     viewer_protocol_policy = "redirect-to-https"
 
     allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
