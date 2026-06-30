@@ -69,3 +69,69 @@ nagoyameshi-infra/
 │   └── architecture.png # 構成図
 └── README.md
 
+├── waf.tf               # WAF 関連リソース
+├── ssm.tf               # Systems Manager Parameter Store
+├── images/
+│   └── architecture.png # 構成図
+└── README.md
+## デプロイ結果
+
+- ✅ Terraform による AWS インフラの構築
+- ✅ VPC、Public / Private Subnet の作成
+- ✅ ECS Fargate 上への Laravel アプリケーションのデプロイ
+- ✅ ALB を経由したアプリケーション公開
+- ✅ RDS(MySQL) との接続確認
+- ✅ CloudFront + ACM による HTTPS 化
+- ✅ Route53 による独自ドメイン設定
+- ✅ WAF による Web アプリケーション保護
+
+## URL
+
+**本番環境**
+
+https://chamcham.blog
+
+## 学んだこと
+
+このプロジェクトを通して、Terraform を利用した Infrastructure as Code の考え方を学び、AWS 上にインフラをコードで構築・管理する経験を積みました。
+
+また、VPC・ECS Fargate・RDS・ALB・CloudFront・Route53・ACM・WAF など複数の AWS サービスを組み合わせ、可用性・セキュリティ・運用性を意識した構成を実装しました。
+
+Terraform のモジュール構成やリソース間の依存関係、AWS のネットワーク設計について理解を深めることができました。
+
+## 工夫した点
+
+- Public Subnet と Private Subnet を分離し、セキュリティを考慮した構成としました。
+- ECS Fargate を採用し、サーバー管理の負担を軽減しました。
+- CloudFront と ACM を利用し、独自ドメインで HTTPS 通信を実現しました。
+- Terraform によりインフラ構成をコード化し、再現性・保守性を向上させました。
+- IAM ロールや Security Group を最小権限となるよう意識して設定しました。
+
+## 今後の改善点
+
+今後は以下のような構成も取り入れ、より実践的な AWS 環境を構築していきたいと考えています。
+
+- Auto Scaling の導入
+- CI/CD（GitHub Actions または CodePipeline）の自動化
+- CloudWatch アラーム・SNS 通知による監視強化
+- Terraform Module 化による再利用性向上
+- ECS Blue/Green デプロイの導入
+
+## 備考
+
+本構成は AWS・Terraform の学習を目的として構築したポートフォリオです。
+今後も新しい AWS サービスや IaC のベストプラクティスを学びながら改善を続けていきます。
+## 技術スタック
+
+- Terraform
+- AWS VPC
+- ECS Fargate
+- Application Load Balancer
+- Amazon RDS (MySQL)
+- Amazon Route53
+- Amazon CloudFront
+- AWS Certificate Manager
+- AWS WAF
+- AWS Systems Manager Parameter Store
+- Amazon CloudWatch
+- Amazon S3
