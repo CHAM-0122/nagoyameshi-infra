@@ -58,7 +58,6 @@ AWS の各サービスを組み合わせ、
 |Document|Description|
 |---|---|
 |📑 [Proposal](docs/proposal.pdf)|システム提案書|
-|🏗️ [Architecture Diagram](docs/architecture.pdf)|システム構成図(PDF)|
 |💰 [AWS Cost Estimate](docs/estimate.pdf)|AWS利用料金見積書|
 |📋 [Parameter Sheet](docs/parameter-sheet.pdf)|AWS設定一覧|
 
